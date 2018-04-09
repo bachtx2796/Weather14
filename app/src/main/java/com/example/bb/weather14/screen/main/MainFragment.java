@@ -55,7 +55,6 @@ public class MainFragment extends BaseFragment {
         ((MainActivity) mContainerView).showMenu();
     }
 
-
     @SuppressLint("MissingPermission")
     @Override
     public void onResume() {
@@ -64,7 +63,6 @@ public class MainFragment extends BaseFragment {
             getMyLocation();
         }
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
