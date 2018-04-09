@@ -1,0 +1,7 @@
+
+Osquid:S1118":Add a private constructor to hide the implicit public one.(£ó‘ã
+Nsquid:S3400"9Remove this method and declare a constant for this value.(¥°‰ø
+Ysquid:UselessImportCheck"0Remove this unused import 'okhttp3.Interceptor'.(ËÖ‹ã8¦ªœˆ¥,
+Zsquid:UselessImportCheck",Remove this unused import 'okhttp3.Request'.(¬ßØŽÿÿÿÿÿ8¦ªœˆ¥,
+[squid:UselessImportCheck"-Remove this unused import 'okhttp3.Response'.(Ï‚ñ—øÿÿÿÿ8¦ªœˆ¥,
+^squid:UselessImportCheck"0Remove this unused import 'java.io.IOException'.(ªº»Úýÿÿÿÿ8¦ªœˆ¥,

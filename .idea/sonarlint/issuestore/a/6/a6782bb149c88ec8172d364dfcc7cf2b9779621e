@@ -1,0 +1,8 @@
+
+ssquid:UselessImportCheck"LRemove this unused import 'com.google.android.gms.maps.CameraUpdateFactory'.(ÁËòøúÿÿÿÿ
+isquid:S00116"SRename this field "LOCATION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç—Œ
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(äğÔÁ8êæÕ¯¨,
+lsquid:UselessImportCheck"ERemove this unused import 'com.google.android.gms.maps.CameraUpdate'.(‘Èİ…úÿÿÿÿ
+esquid:UselessImportCheck">Remove this unused import 'android.content.pm.PackageManager'.(€®¥õÿÿÿÿÿ
+isquid:UselessImportCheck"BRemove this unused import 'android.support.v4.app.ActivityCompat'.(Äüşÿÿÿÿ
+Jsquid:S1125")Remove the literal "false" boolean value.(ÌøË¢ûÿÿÿÿ8Â£Ô¯¨,
