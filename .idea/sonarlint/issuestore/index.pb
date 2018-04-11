@@ -9,10 +9,6 @@ Y
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 \
 ,app/src/main/res/layout/layout_main_temp.xml,6/3/63fb920a8aa63391db6badfea209644c1c8d57d2
-s
-Capp/src/main/java/com/example/bb/weather14/screen/MainActivity.java,5/7/57a23d31e91fc0bc65018e51dc3e5649b8cdbb2d
-s
-Capp/src/main/java/com/example/bb/weather14/screen/MainFragment.java,7/5/75b2f2858c7195d8815b6618c511f6ce97c94d93
 B
 BCore/build.gradle,3/d/3dd72d21829d6ce66998970ced49a98dd24a45cb
 }
