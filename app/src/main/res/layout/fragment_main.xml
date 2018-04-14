@@ -10,6 +10,7 @@
         android:id="@+id/custom_header_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:custom_header_action_ic_src="@drawable/ic_placeholder"
         app:custom_header_left_action_ic_src="@drawable/ic_menu" />
 
     <LinearLayout

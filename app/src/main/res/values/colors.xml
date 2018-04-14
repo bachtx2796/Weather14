@@ -8,4 +8,5 @@
     <color name="green">#66BB6A</color>
     <color name="blue_gray">#607D8B</color>
     <color name="opacity_black">#5a000000</color>
+    <color name="grey">#BDBDBD</color>
 </resources>

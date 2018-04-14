@@ -9,10 +9,6 @@ Y
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 \
 ,app/src/main/res/layout/layout_main_temp.xml,6/3/63fb920a8aa63391db6badfea209644c1c8d57d2
-s
-Capp/src/main/java/com/example/bb/weather14/screen/MainActivity.java,5/7/57a23d31e91fc0bc65018e51dc3e5649b8cdbb2d
-s
-Capp/src/main/java/com/example/bb/weather14/screen/MainFragment.java,7/5/75b2f2858c7195d8815b6618c511f6ce97c94d93
 B
 BCore/build.gradle,3/d/3dd72d21829d6ce66998970ced49a98dd24a45cb
 }
@@ -27,3 +23,27 @@ r
 Bapp/src/main/java/com/example/bb/weather14/data/GoogleService.java,1/6/16a73ebb0f148cb4b03552b2a12c13d79554f9ac
 y
 Iapp/src/main/java/com/example/bb/weather14/data/GoogleServiceBuilder.java,9/5/9563768e4bc13649e80219293cb11995135a6b59
+x
+Happ/src/main/java/com/example/bb/weather14/screen/rada/RadaFragmnet.java,5/9/59327805b3156957fe6a002c4a2d17467ca40cda
+x
+Happ/src/main/java/com/example/bb/weather14/data/dto/NotificationDTO.java,8/5/858de592d1a939113d0f8b743ac54e96b349482e
+R
+"app/src/main/res/values/colors.xml,9/6/969faa2a5d9f5e8390e958d2c07f2cfd54676e6b
+R
+"app/src/main/res/values/dimens.xml,c/3/c3c1811dec2dbad2deeafb9aad505ca9631da740
+S
+#.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
+‹
+[app/src/main/java/com/example/bb/weather14/pushnotification/MyFirebaseMessagingService.java,6/d/6d6bc882ab908b7bafd47224a93a3a9489e2eea3
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+n
+>app/src/main/java/com/example/bb/weather14/utils/AppUtils.java,5/3/53b1c2756ab1411422eb5f7579d272118d3a46e3
+q
+Aapp/src/main/java/com/example/bb/weather14/utils/GlobalStuff.java,a/4/a4e42dc0de374f1cb4d2702be3e08918fc9b7965
+S
+#app/src/main/res/values/strings.xml,d/2/d2281fbb3027de2722081a53408dd77628bf080e
+w
+Gapp/src/main/java/com/example/bb/weather14/utils/NotificationUtils.java,c/2/c2b3b8d08758dddf2be57c44d622ca161f5cadf2
+_
+/app/src/main/res/layout/layout_notification.xml,f/8/f871144bc397bc2da69c226ed90ed6d5303bf037

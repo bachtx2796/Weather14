@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.bb.bachcore.activity.ContainerView;
 import com.example.bb.bachcore.fragment.BaseFragment;
+import com.example.bb.bachcore.utils.DialogUtils;
 import com.example.bb.bachcore.utils.PermissionUtils;
 import com.example.bb.weather14.R;
 import com.example.bb.weather14.customview.CustomHeaderView;
@@ -16,6 +17,7 @@ import com.example.bb.weather14.screen.rada.RadaFragmnet;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import butterknife.BindView;
@@ -60,6 +62,7 @@ public class MainFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         if (!PermissionUtils.needRequestPermissions(getActivity(), MainFragment.this, LOCATION, 100)) {
+            DialogUtils.showProgressDialog(getContext());
             getMyLocation();
         }
     }
@@ -78,11 +81,16 @@ public class MainFragment extends BaseFragment {
             @Override
             public void onSuccess(Location location) {
                 if (location != null) {
+                    DialogUtils.dismissProgressDialog();
                     LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                     mCustomHeaderView.setTitle(latLng.latitude+" "+latLng.longitude);
+                } else {
+                    getMyLocation();
                 }
             }
         });
+
+
     }
 
 }
