@@ -49,7 +49,6 @@ public class MainFragment extends BaseFragment {
     protected void initLayout() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
         new MapManager(getContext()).turnOnGPS();
-
     }
 
     @OnClick(R.id.back_iv)
