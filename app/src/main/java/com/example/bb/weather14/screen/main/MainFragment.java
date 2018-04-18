@@ -11,6 +11,9 @@ import com.example.bb.bachcore.fragment.BaseFragment;
 import com.example.bb.bachcore.utils.PermissionUtils;
 import com.example.bb.weather14.R;
 import com.example.bb.weather14.customview.CustomHeaderView;
+import com.example.bb.weather14.data.ServiceBuilder;
+import com.example.bb.weather14.data.dto.Coord;
+import com.example.bb.weather14.data.dto.LocationDTO;
 import com.example.bb.weather14.map.MapManager;
 import com.example.bb.weather14.screen.rada.RadaFragmnet;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -18,8 +21,12 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import javax.security.auth.callback.Callback;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Created by BB on 3/16/2018.
@@ -47,7 +54,17 @@ public class MainFragment extends BaseFragment {
     protected void initLayout() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
         new MapManager(getContext()).turnOnGPS();
+        ServiceBuilder.getApiService().getLocation("21.028511, 105.804817",false,false).enqueue(new retrofit2.Callback<LocationDTO>() {
+            @Override
+            public void onResponse(Call<LocationDTO> call, Response<LocationDTO> response) {
+                response.body();
+            }
 
+            @Override
+            public void onFailure(Call<LocationDTO> call, Throwable t) {
+
+            }
+        });
     }
 
     @OnClick(R.id.back_iv)

@@ -30,6 +30,8 @@ android {
         dev {
             applicationId = "com.example.bb.weather14"
             resValue 'string', 'app_name', '"Weather14 Dev"'
+            buildConfigField 'String','BASE_URL','"http://dataservice.accuweather.com"'
+            buildConfigField 'String','API_KEY','"xYlBJOLZjf1Mkc6XwWblFpXcaVB0YmPD"'
         }
 
         prod {
