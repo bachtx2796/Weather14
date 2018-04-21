@@ -15,7 +15,12 @@ public class PrefWrapper {
 
     public static final String MY_PREFERENCES = "Pref";
     public static final String MY_LOCATIONS = "locations";
+    public static final String LOCATION_KEY="key";
+    private static Context viewContext;
 
+    public static void init(Context context){
+        viewContext=context;
+    }
 
     public static SharedPreferences getPreference(Context context) {
         return context.getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
@@ -25,7 +30,7 @@ public class PrefWrapper {
         String placesJson = new Gson().toJson(places);
         SharedPreferences.Editor editor = getPreference(context).edit();
         editor.putString(MY_LOCATIONS, placesJson);
-        editor.commit();
+        editor.apply();
     }
 
     public static PredictionPlaces getPlaces(Context context) {
@@ -35,4 +40,18 @@ public class PrefWrapper {
         }
         return new Gson().fromJson(placeJson, PredictionPlaces.class);
     }
+
+    public static void saveLocationKey(String locationKey){
+        String key=new Gson().toJson(locationKey);
+        SharedPreferences.Editor editor = getPreference(viewContext).edit();
+        editor.putString(LOCATION_KEY,key);
+        editor.apply();
+    }
+
+    public static String getKey(){
+        String placeKey=getPreference(viewContext).getString(LOCATION_KEY,"");
+        return new Gson().fromJson(placeKey,String.class);
+    }
+
+
 }
