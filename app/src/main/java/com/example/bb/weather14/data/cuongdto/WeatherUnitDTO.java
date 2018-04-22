@@ -13,4 +13,16 @@ public class WeatherUnitDTO {
   String unit;
   @SerializedName("UnitType")
   int unitType;
+
+  public float getTemp() {
+    return temp;
+  }
+
+  public String getUnit() {
+    return unit;
+  }
+
+  public int getUnitType() {
+    return unitType;
+  }
 }
