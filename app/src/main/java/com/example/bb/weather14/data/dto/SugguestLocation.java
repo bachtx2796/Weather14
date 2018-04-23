@@ -8,18 +8,39 @@ import com.google.gson.annotations.SerializedName;
 
 public class SugguestLocation {
 
-    @SerializedName("description")
-    private String description;
+  @SerializedName("description")
+  private String description;
+  @SerializedName("structured_formatting")
+  private StructureFormattingDTO structuredFormatting;
 
-    public SugguestLocation(String description) {
-        this.description = description;
-    }
+  private String key;
 
-    public String getDescription() {
-        return description;
-    }
+  public String getKey() {
+    return key;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public void setKey(String key) {
+    this.key = key;
+  }
+
+  public SugguestLocation(String description, StructureFormattingDTO structuredFormatting) {
+    this.description = description;
+    this.structuredFormatting = structuredFormatting;
+  }
+
+  public StructureFormattingDTO getStructuredFormatting() {
+    return structuredFormatting;
+  }
+
+  public void setStructuredFormatting(StructureFormattingDTO structuredFormatting) {
+    this.structuredFormatting = structuredFormatting;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
 }

@@ -21,56 +21,65 @@ import butterknife.ButterKnife;
 
 public class MyLocationAdapter extends RecyclerView.Adapter {
 
-    private Context mContext;
-    private List<SugguestLocation> mSugguestLocations;
-    private OnClickTrashhListener onClickTrashhListener;
+  private Context mContext;
+  private List<SugguestLocation> mSugguestLocations;
+  private OnClickTrashhListener onClickTrashhListener;
 
-    public void setOnClickTrashhListener(OnClickTrashhListener onClickTrashhListener) {
-        this.onClickTrashhListener = onClickTrashhListener;
+  public void setOnClickTrashhListener(OnClickTrashhListener onClickTrashhListener) {
+    this.onClickTrashhListener = onClickTrashhListener;
+  }
+
+  public MyLocationAdapter(Context mContext, List<SugguestLocation> mSugguestLocations) {
+    this.mContext = mContext;
+    this.mSugguestLocations = mSugguestLocations;
+  }
+
+  public class MyLocationHolder extends RecyclerView.ViewHolder {
+
+    @BindView(R.id.name_tv)
+    TextView mNameTv;
+    @BindView(R.id.trash_bt)
+    ImageView mTrashBt;
+
+    public MyLocationHolder(View itemView) {
+      super(itemView);
+      ButterKnife.bind(this, itemView);
     }
+  }
 
-    public MyLocationAdapter(Context mContext, List<SugguestLocation> mSugguestLocations) {
-        this.mContext = mContext;
-        this.mSugguestLocations = mSugguestLocations;
-    }
+  @Override
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    View view = View.inflate(mContext, R.layout.item_my_location, null);
+    return new MyLocationHolder(view);
+  }
 
-    public class MyLocationHolder extends RecyclerView.ViewHolder {
+  @Override
+  public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    MyLocationHolder myLocationHolder = (MyLocationHolder) holder;
+    myLocationHolder.mTrashBt.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        onClickTrashhListener.onClickTrash(position);
+      }
+    });
 
-        @BindView(R.id.name_tv)
-        TextView mNameTv;
-        @BindView(R.id.trash_bt)
-        ImageView mTrashBt;
+    myLocationHolder.itemView.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        onClickTrashhListener.onItemClick(mSugguestLocations.get(position).getKey());
+      }
+    });
+    myLocationHolder.mNameTv.setText(mSugguestLocations.get(position).getDescription());
+  }
 
-        public MyLocationHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-        }
-    }
+  @Override
+  public int getItemCount() {
+    return mSugguestLocations.size();
+  }
 
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(mContext, R.layout.item_my_location, null);
-        return new MyLocationHolder(view);
-    }
+  public interface OnClickTrashhListener {
+    void onItemClick(String des);
 
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        MyLocationHolder myLocationHolder = (MyLocationHolder) holder;
-        myLocationHolder.mTrashBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickTrashhListener.onClickTrash(position);
-            }
-        });
-        myLocationHolder.mNameTv.setText(mSugguestLocations.get(position).getDescription());
-    }
-
-    @Override
-    public int getItemCount() {
-        return mSugguestLocations.size();
-    }
-
-    public interface OnClickTrashhListener {
-        void onClickTrash(int pos);
-    }
+    void onClickTrash(int pos);
+  }
 }

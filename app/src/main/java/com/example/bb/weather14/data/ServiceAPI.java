@@ -22,12 +22,18 @@ import retrofit2.http.Query;
  */
 
 public interface ServiceAPI {
-  @GET("/locations/v1/cities/geoposition/search")
-  Call<LocationDTO> getLocation(@Query("q") String latlngLocation,
-                                @Query("details") boolean detail,
-                                @Query("toplevel") boolean topLevel);
 
-  @GET("/forecasts/v1/hourly/12hour/{locationkey}")
+  @GET("http://dataservice.accuweather.com/locations/v1/search")
+  Call<List<LocationDTO>> getLocationKeyByName(@Query("q") String name,
+                                               @Query("details") boolean details,
+                                               @Query("offset") int offset);
+
+  @GET("/locations/v1/cities/geoposition/search")
+  Call<List<LocationDTO>> getLocation(@Query("q") String latlngLocation,
+                                      @Query("details") boolean detail,
+                                      @Query("toplevel") boolean topLevel);
+
+  @GET("/forecasts/v1/hourly/12hour/")
   Call<List<HourlyDTO>> getHourlyWeather(@Path("locationkey") String locationKey,
                                          @Query("details") boolean detail,
                                          @Query("metric") boolean metric);
