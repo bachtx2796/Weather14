@@ -35,6 +35,7 @@ import com.example.bb.weather14.screen.rada.RadaFragmnet;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.squareup.picasso.Picasso;
 
@@ -120,14 +121,15 @@ public class MainFragment extends BaseFragment {
     ((MainActivity) mContainerView).showMenu();
   }
 
-  @SuppressLint("MissingPermission")
-  @Override
-  public void onResume() {
-    super.onResume();
-    if (!PermissionUtils.needRequestPermissions(getActivity(), MainFragment.this, LOCATION, 100)) {
-      getMyLocation();
+    @SuppressLint("MissingPermission")
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!PermissionUtils.needRequestPermissions(getActivity(), MainFragment.this, LOCATION, 100)) {
+            DialogUtils.showProgressDialog(getContext());
+            getMyLocation();
+        }
     }
-  }
 
   @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

@@ -12,4 +12,13 @@
   <color name="blue">#317ced</color>
   <color name="gray">#bab2b2</color>
   <color name="semi_transparent">#30000000</color>
+    <color name="colorPrimary">#455A64</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#607D8B</color>
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="green">#66BB6A</color>
+    <color name="blue_gray">#607D8B</color>
+    <color name="opacity_black">#5a000000</color>
+    <color name="grey">#BDBDBD</color>
 </resources>
