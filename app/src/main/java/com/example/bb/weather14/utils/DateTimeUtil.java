@@ -1,4 +1,4 @@
-package com.example.bb.weather14.Utils;
+package com.example.bb.weather14.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

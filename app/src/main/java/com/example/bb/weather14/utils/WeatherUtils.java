@@ -1,4 +1,4 @@
-package com.example.bb.weather14.Utils;
+package com.example.bb.weather14.utils;
 
 /**
  * Created by Windows 18 on 4/21/2018.

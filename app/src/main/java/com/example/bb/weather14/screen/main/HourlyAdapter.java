@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.bb.weather14.R;
-import com.example.bb.weather14.Utils.WeatherUtils;
+import com.example.bb.weather14.utils.WeatherUtils;
 import com.example.bb.weather14.data.cuongdto.HourlyDTO;
 import com.squareup.picasso.Picasso;
 

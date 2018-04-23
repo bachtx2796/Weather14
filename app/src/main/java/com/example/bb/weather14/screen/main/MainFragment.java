@@ -2,50 +2,39 @@ package com.example.bb.weather14.screen.main;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.Dialog;
+
 import android.content.Context;
-import android.content.DialogInterface;
+
 import android.location.Location;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutCompat;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
-import android.view.Window;
+
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.example.bb.bachcore.activity.ContainerView;
 import com.example.bb.bachcore.fragment.BaseFragment;
 import com.example.bb.bachcore.utils.DialogUtils;
 import com.example.bb.bachcore.utils.PermissionUtils;
 import com.example.bb.weather14.R;
-import com.example.bb.weather14.Utils.DateTimeUtil;
-import com.example.bb.weather14.Utils.WeatherUtils;
+import com.example.bb.weather14.utils.DateTimeUtil;
+import com.example.bb.weather14.utils.WeatherUtils;
 import com.example.bb.weather14.customview.CustomHeaderView;
-import com.example.bb.weather14.customview.CustomIOSDialog;
 import com.example.bb.weather14.data.ServiceBuilder;
 import com.example.bb.weather14.data.cuongdto.HourlyDTO;
-import com.example.bb.weather14.data.cuongdto.WeatherUnitDTO;
-import com.example.bb.weather14.data.dto.Coord;
-import com.example.bb.weather14.data.dto.LocationDTO;
+
+
 import com.example.bb.weather14.map.MapManager;
-import com.example.bb.weather14.screen.rada.RadaFragmnet;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.Calendar;
 import java.util.List;
-
-import javax.security.auth.callback.Callback;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -144,25 +133,26 @@ public class MainFragment extends BaseFragment {
     fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
       @Override
       public void onSuccess(Location location) {
+        DialogUtils.dismissProgressDialog();
         if (location != null) {
           LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
           mCustomHeaderView.setTitle(latLng.latitude + " " + latLng.longitude);
-
-        } else {
-          Context context = getContext();
-          CustomIOSDialog dialog = new CustomIOSDialog(getContext(), new CustomIOSDialog.OnDialogClicked() {
-            @Override
-            public void negativeClicked() {
-              getActivity().finish();
-            }
-
-            @Override
-            public void possitiveClicked() {
-              getMyLocation();
-            }
-          }, "Quit", "Try again");
-          dialog.show();
         }
+//        } else {
+//          Context context = getContext();
+//          CustomIOSDialog dialog = new CustomIOSDialog(getContext(), new CustomIOSDialog.OnDialogClicked() {
+//            @Override
+//            public void negativeClicked() {
+//              getActivity().finish();
+//            }
+//
+//            @Override
+//            public void possitiveClicked() {
+//              getMyLocation();
+//            }
+//          }, "Quit", "Try again");
+//          dialog.show();
+//        }
       }
     });
   }
