@@ -10,7 +10,7 @@ import java.util.Calendar;
 public class DateTimeUtil {
   public static String getCurrentDay(){
     Calendar calendar=Calendar.getInstance();
-    String format=new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime());
+    String format=new SimpleDateFormat("dd MMM yyyy").format(calendar.getTime());
     return format;
   }
 }

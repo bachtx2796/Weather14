@@ -1,18 +1,29 @@
 <resources>
 
-    <string name="setting">cài đặt</string>
-    <string name="home">Trang chủ</string>
-    <string name="location">Vị trí</string>
-    <string name="notification">Thông báo</string>
-    <string name="temp">Nhiệt độ</string>
-    <string name="version">Phiên bản 1.0</string>
-    <string name="c">C</string>
-    <string name="f">F</string>
-    <string name="search_location">Tìm kiếm vị trí</string>
-    <string name="add_location">Thêm địa điểm</string>
-    <string name="radar">Radar</string>
-    <string name="location_manager">Chỉnh sửa địa điểm</string>
-    <string name="my_location">Địa điểm của tôi</string>
+  <string name="setting">cài đặt</string>
+  <string name="home">Trang chủ</string>
+  <string name="location">Vị trí</string>
+  <string name="notification">Thông báo</string>
+  <string name="temp">Nhiệt độ</string>
+  <string name="version">Phiên bản 1.0</string>
+  <string name="c">C</string>
+  <string name="f">F</string>
+  <string name="search_location">Tìm kiếm vị trí</string>
+  <string name="add_location">Thêm địa điểm</string>
+  <string name="radar">Radar</string>
+  <string name="location_manager">Chỉnh sửa địa điểm</string>
+  <string name="my_location">Địa điểm của tôi</string>
   <string name="du_bao">Dự báo</string>
-    <string name="version_name_format">%s</string>
+  <string name="version_name_format">%s</string>
+  <string name="do_am">Độ ẩm</string>
+  <string name="luong_mua">Lượng mưa</string>
+  <string name="kha_nang_mua">Khả năng có mưa</string>
+  <string name="gio_lanh">Gió lạnh</string>
+  <string name="diem_suong">Điểm sương</string>
+  <string name="may_phu">Mây che phủ</string>
+  <string name="ap_suat">Áp suất</string>
+  <string name="chi_so_cuc_tim">Chỉ số cực tím</string>
+  <string name="binh_minh">Bình minh</string>
+  <string name="hoang_hon">Hoàng hôn</string>
+  <string name="networking_connect">Xem lại mạng và thử kết nối lại!</string>
 </resources>

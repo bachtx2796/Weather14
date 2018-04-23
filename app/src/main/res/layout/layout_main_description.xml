@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginTop="@dimen/margin_10dp"
+  android:background="@drawable/bg_opacity_black"
+  android:orientation="horizontal"
+  android:padding="@dimen/padding_10dp"
+  android:weightSum="3">
+
+  <ImageView
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="0.8" />
+
+  <LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1.2"
+    android:orientation="vertical">
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="@string/do_am"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="@string/luong_mua"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="@string/kha_nang_mua"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="@string/gio_lanh"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="@string/diem_suong"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="@string/may_phu"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="@string/ap_suat"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="@string/chi_so_cuc_tim"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="@string/binh_minh"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="@string/hoang_hon"
+      android:textSize="@dimen/ts_14sp" />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical">
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:text="Độ ẩm"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="Độ ẩm"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="Độ ẩm"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="Độ ẩm"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="Độ ẩm"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="Độ ẩm"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="Độ ẩm"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="Độ ẩm"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="Độ ẩm"
+      android:textSize="@dimen/ts_14sp" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:text="Độ ẩm"
+      android:textSize="@dimen/ts_14sp" />
+
+
+  </LinearLayout>
+</LinearLayout>

@@ -4,6 +4,7 @@ import com.example.bb.weather14.data.cuongdto.HourlyDTO;
 import com.example.bb.weather14.data.dto.Coord;
 import com.example.bb.weather14.data.dto.GoogleMapSearchDTO;
 import com.example.bb.weather14.data.dto.LocationDTO;
+import com.example.bb.weather14.data.dto.TempDetailDTO;
 import com.example.bb.weather14.pref.PrefWrapper;
 
 import org.json.JSONArray;
@@ -29,13 +30,17 @@ public interface ServiceAPI {
                                                @Query("offset") int offset);
 
   @GET("/locations/v1/cities/geoposition/search")
-  Call<List<LocationDTO>> getLocation(@Query("q") String latlngLocation,
-                                      @Query("details") boolean detail,
-                                      @Query("toplevel") boolean topLevel);
+  Call<LocationDTO> getLocation(@Query("q") String latlngLocation,
+                                @Query("details") boolean detail,
+                                @Query("toplevel") boolean topLevel);
 
-  @GET("/forecasts/v1/hourly/12hour/")
-  Call<List<HourlyDTO>> getHourlyWeather(@Path("locationkey") String locationKey,
+  @GET("/forecasts/v1/hourly/12hour/{location_key}")
+  Call<List<HourlyDTO>> getHourlyWeather(@Path("location_key") String locationKey,
                                          @Query("details") boolean detail,
                                          @Query("metric") boolean metric);
+
+  @GET("/currentconditions/v1/{location_key}")
+  Call<TempDetailDTO> getCurrentTempDetail(@Path("location_key") String key,
+                                           @Query("details") boolean details);
 
 }
