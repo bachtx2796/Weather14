@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.bb.bachcore.activity.ContainerView;
@@ -58,7 +59,6 @@ public class MainFragment extends BaseFragment {
   RecyclerView mHourlyRv;
   private FusedLocationProviderClient fusedLocationProviderClient;
   private String[] LOCATION = new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
-  private Calendar mCalendar = Calendar.getInstance();
 
   public MainFragment(ContainerView mContainerView) {
     super(mContainerView);
@@ -71,7 +71,6 @@ public class MainFragment extends BaseFragment {
 
   @Override
   protected void initLayout() {
-    Context c = getContext();
     mCurrentDayTv.setText(DateTimeUtil.getCurrentDay());
     WeatherUtils.getWeatherIconURL(11);
     fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
@@ -87,11 +86,17 @@ public class MainFragment extends BaseFragment {
 //
 //      }
 //    });
-    ServiceBuilder.getApiService().getHourlyWeather("353412", true, false).enqueue(new retrofit2.Callback<List<HourlyDTO>>() {
+    ServiceBuilder.getApiService().getHourlyWeather("353412", true, true).enqueue(new retrofit2.Callback<List<HourlyDTO>>() {
       @Override
       public void onResponse(Call<List<HourlyDTO>> call, Response<List<HourlyDTO>> response) {
+        DialogUtils.dismissProgressDialog();
         if (response.isSuccessful()) {
-          HourlyAdapter adapter = new HourlyAdapter(getContext(), response.body());
+          HourlyAdapter adapter = new HourlyAdapter(getContext(), response.body(), new HourlyAdapter.OnHourlyItemClicked() {
+            @Override
+            public void onItemClicked(int position) {
+
+            }
+          });
           LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
           mHourlyRv.setLayoutManager(manager);
           mHourlyRv.setAdapter(adapter);
@@ -100,7 +105,7 @@ public class MainFragment extends BaseFragment {
 
       @Override
       public void onFailure(Call<List<HourlyDTO>> call, Throwable t) {
-
+        DialogUtils.dismissProgressDialog();
       }
     });
   }
@@ -133,13 +138,11 @@ public class MainFragment extends BaseFragment {
     fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
       @Override
       public void onSuccess(Location location) {
-        DialogUtils.dismissProgressDialog();
         if (location != null) {
           LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
           mCustomHeaderView.setTitle(latLng.latitude + " " + latLng.longitude);
         }
 //        } else {
-//          Context context = getContext();
 //          CustomIOSDialog dialog = new CustomIOSDialog(getContext(), new CustomIOSDialog.OnDialogClicked() {
 //            @Override
 //            public void negativeClicked() {

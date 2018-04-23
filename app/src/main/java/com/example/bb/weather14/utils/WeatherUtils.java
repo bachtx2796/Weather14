@@ -22,4 +22,8 @@ public class WeatherUtils {
   public static String getWeatherIconURL(int iconNumber){
     return new String("https://developer.accuweather.com/sites/default/files/"+String.format("%02d",iconNumber)+"-s.png");
   }
+
+  public static String getCurrentTime(String time){
+    return  time.substring(11,16);
+  }
 }

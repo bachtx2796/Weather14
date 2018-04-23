@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.bb.weather14.R;
@@ -26,9 +27,11 @@ import butterknife.ButterKnife;
 public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.HourlyVH> {
   private Context mContext;
   private List<HourlyDTO> mlistWeather=new ArrayList<HourlyDTO>();
-  public HourlyAdapter(Context context, List<HourlyDTO> hourlyDTOS) {
+  private OnHourlyItemClicked clicked;
+  public HourlyAdapter(Context context, List<HourlyDTO> hourlyDTOS,OnHourlyItemClicked clicked) {
     this.mlistWeather= hourlyDTOS;
     this.mContext=context;
+    this.clicked=clicked;
   }
 
   @Override
@@ -38,12 +41,17 @@ public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.HourlyVH> 
   }
 
   @Override
-  public void onBindViewHolder(HourlyVH holder, int position) {
-    holder.mTimeTv.setText("13:00");
+  public void onBindViewHolder(HourlyVH holder, final int position) {
+    holder.mTimeTv.setText(WeatherUtils.getCurrentTime(mlistWeather.get(position).getDateTime()));
     String uri= WeatherUtils.getWeatherIconURL(mlistWeather.get(position).getIconValue());
     Picasso.with(mContext).load(uri).into(holder.mWeatherIv);
-    holder.mDegreeTv.setText(mlistWeather.get(0).getTemp().getTemp()+"");
-
+    holder.mDegreeTv.setText(mlistWeather.get(position).getTemp().getTemp()+"\u2103");
+    holder.mHourlyLl.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+          clicked.onItemClicked(position);
+      }
+    });
   }
 
   @Override
@@ -58,11 +66,16 @@ public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.HourlyVH> 
     ImageView mWeatherIv;
     @BindView(R.id.tv_degree_hourly)
     TextView mDegreeTv;
-
+    @BindView(R.id.ll_hourly_item)
+    LinearLayout mHourlyLl;
     public HourlyVH(View itemView) {
       super(itemView);
       ButterKnife.bind(this,itemView);
     }
 
+  }
+
+  interface OnHourlyItemClicked{
+     void onItemClicked(int position);
   }
 }
