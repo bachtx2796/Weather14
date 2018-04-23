@@ -17,6 +17,7 @@
       android:orientation="vertical">
 
       <TextView
+        android:id="@+id/tv_current_day"
         style="@style/BaseTextView.TitleText"
         android:text="02/07/1996" />
 
@@ -24,12 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/white"
         android:format12Hour="hh:mm:ss aa"
         android:format24Hour="kk:mm:ss"
+        android:textColor="@color/white"
         android:textSize="32sp" />
     </LinearLayout>
-
 
 
   </LinearLayout>

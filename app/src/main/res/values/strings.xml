@@ -13,5 +13,6 @@
     <string name="radar">Radar</string>
     <string name="location_manager">Chỉnh sửa địa điểm</string>
     <string name="my_location">Địa điểm của tôi</string>
+  <string name="du_bao">Dự báo</string>
     <string name="version_name_format">%s</string>
 </resources>
