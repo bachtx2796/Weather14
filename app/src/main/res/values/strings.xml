@@ -26,4 +26,6 @@
   <string name="binh_minh">Bình minh</string>
   <string name="hoang_hon">Hoàng hôn</string>
   <string name="networking_connect">Xem lại mạng và thử kết nối lại!</string>
+  <string name="daily_temp_des">Thời tiết 5 ngày tới</string>
+  <string name="temp_detail">Thêm chi tiết</string>
 </resources>

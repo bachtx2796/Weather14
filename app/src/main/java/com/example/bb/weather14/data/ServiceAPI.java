@@ -4,6 +4,7 @@ import com.example.bb.weather14.data.cuongdto.HourlyDTO;
 import com.example.bb.weather14.data.dto.Coord;
 import com.example.bb.weather14.data.dto.GoogleMapSearchDTO;
 import com.example.bb.weather14.data.dto.LocationDTO;
+import com.example.bb.weather14.data.dto.TempDailyDTO;
 import com.example.bb.weather14.data.dto.TempDetailDTO;
 import com.example.bb.weather14.pref.PrefWrapper;
 
@@ -40,7 +41,12 @@ public interface ServiceAPI {
                                          @Query("metric") boolean metric);
 
   @GET("/currentconditions/v1/{location_key}")
-  Call<TempDetailDTO> getCurrentTempDetail(@Path("location_key") String key,
-                                           @Query("details") boolean details);
+  Call<List<TempDetailDTO>> getCurrentTempDetail(@Path("location_key") String key,
+                                                 @Query("details") boolean details);
+
+  @GET("/forecasts/v1/daily/5day/{location_key}")
+  Call<TempDailyDTO> getTempDaily(@Path("location_key") String key,
+                                  @Query("details") boolean details,
+                                  @Query("metric") boolean metric);
 
 }

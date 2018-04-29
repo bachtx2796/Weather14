@@ -25,26 +25,12 @@
 
       <include layout="@layout/layout_main_temp" />
 
+      <include layout="@layout/layout_main_hourly_temp"/>
+
+      <include layout="@layout/layout_main_daily_temp"/>
+
       <include layout="@layout/layout_main_description" />
-      <!--<TextView-->
-      <!--android:layout_width="wrap_content"-->
-      <!--android:layout_height="wrap_content"-->
-      <!--android:fontFamily="sans-serif-light"-->
-      <!--android:text="@string/du_bao"-->
-      <!--android:textColor="@color/white"-->
-      <!--android:textSize="20sp" />-->
 
-      <!--<View-->
-      <!--android:layout_width="match_parent"-->
-      <!--android:layout_height="1dp"-->
-      <!--android:layout_marginBottom="@dimen/margin_10dp"-->
-      <!--android:layout_marginTop="5dp"-->
-      <!--android:background="@color/white" />-->
-
-      <!--<android.support.v7.widget.RecyclerView-->
-      <!--android:id="@+id/rv_hourly_weather"-->
-      <!--android:layout_width="match_parent"-->
-      <!--android:layout_height="wrap_content" />-->
     </LinearLayout>
   </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

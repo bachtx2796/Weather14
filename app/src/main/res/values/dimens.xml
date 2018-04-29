@@ -13,4 +13,9 @@
   <dimen name="size_48dp">48dp</dimen>
   <dimen name="margin_20dp">20dp</dimen>
   <dimen name="ts_14sp">14sp</dimen>
+  <dimen name="padding_5dp">5dp</dimen>
+  <dimen name="size_24dp">24dp</dimen>
+  <dimen name="ts_12sp">12sp</dimen>
+  <dimen name="ts_13sp">13sp</dimen>
+  <dimen name="margin_7dp">7dp</dimen>
 </resources>
