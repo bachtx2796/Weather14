@@ -13,5 +13,7 @@
   <color name="gray">#bab2b2</color>
   <color name="semi_transparent">#30000000</color>
   <color name="dark_transparent">#90000000</color>
+  <color name="orange_text">#EF6C00</color>
+
   <color name="grey">#BDBDBD</color>
 </resources>

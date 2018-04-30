@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginTop="@dimen/margin_10dp"
+  android:background="@drawable/bg_opacity_black"
+  android:orientation="vertical"
+  android:padding="@dimen/padding_5dp">
+
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/temp_hourly_rv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+  <com.github.mikephil.charting.charts.LineChart
+    android:id="@+id/chart_temp"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="@dimen/margin_10dp" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_5dp">
+
+    <TextView
+      android:id="@+id/hourly_rain_tv"
+      style="@style/BaseTextView.TitleText"
+      android:layout_width="0dp"
+      android:layout_weight="1"
+      android:drawableLeft="@drawable/umbr_rain_ic"
+      android:drawablePadding="4dp"
+      android:text="@string/kha_nang_mua"
+      android:textColor="@color/orange_text"
+      android:textSize="@dimen/ts_13sp" />
+
+    <TextView
+      android:id="@+id/detail_bt"
+      style="@style/BaseTextView.TitleText"
+      android:text="@string/temp_detail" />
+  </LinearLayout>
+
+</LinearLayout>

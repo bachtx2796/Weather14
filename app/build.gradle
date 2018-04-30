@@ -31,7 +31,7 @@ android {
             applicationId = "com.example.bb.weather14"
             resValue 'string', 'app_name', '"Weather14 Dev"'
             buildConfigField 'String','BASE_URL','"http://dataservice.accuweather.com"'
-            buildConfigField 'String','API_KEY','"DS9iZmaFX85iFTT3r1vlLjvS09YunpJt"'
+            buildConfigField 'String','API_KEY','"aAGfVNgqPGXwkHpGu9vAxXP5rfe8cf9O"'
         }
 
         prod {
@@ -63,6 +63,7 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:${supportLibraryVersion}"
     compile 'com.malinskiy:superrecyclerview:1.1.4'
     implementation 'com.google.firebase:firebase-messaging:11.6.2'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 }
 
 apply plugin: 'com.google.gms.google-services'
