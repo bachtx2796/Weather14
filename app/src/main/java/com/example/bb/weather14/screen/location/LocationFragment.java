@@ -37,6 +37,11 @@ public class LocationFragment extends BaseFragment {
 
   private List<SugguestLocation> sugguestLocations;
   private MyLocationAdapter myLocationAdapter;
+  private OnItemClickListener mOnItemClickListener;
+
+  public void setmOnItemClickListener(OnItemClickListener mOnItemClickListener) {
+    this.mOnItemClickListener = mOnItemClickListener;
+  }
 
   public LocationFragment(ContainerView mContainerView) {
     super(mContainerView);
@@ -54,29 +59,9 @@ public class LocationFragment extends BaseFragment {
     myLocationAdapter = new MyLocationAdapter(getContext(), sugguestLocations);
     myLocationAdapter.setOnClickTrashhListener(new MyLocationAdapter.OnClickTrashhListener() {
       @Override
-      public void onItemClick(String des) {
-        Toast.makeText(getContext(), des, Toast.LENGTH_SHORT).show();
-//        DialogUtils.showProgressDialog(getContext());
-//        ServiceBuilder.getApiService().getLocationKeyByName(des,
-//            false,
-//            1).enqueue(new Callback<List<LocationDTO>>() {
-//          @Override
-//          public void onResponse(Call<List<LocationDTO>> call, Response<List<LocationDTO>> response) {
-//            DialogUtils.dismissProgressDialog();
-//            if (response.isSuccessful()) {
-//              back();
-//              Toast.makeText(getContext(), response.body().get(0).getKey(), Toast.LENGTH_SHORT).show();
-//            } else {
-//              Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
-//            }
-//          }
-//
-//          @Override
-//          public void onFailure(Call<List<LocationDTO>> call, Throwable t) {
-//            DialogUtils.dismissProgressDialog();
-//            Toast.makeText(getContext(), "failer", Toast.LENGTH_SHORT).show();
-//          }
-//        });
+      public void onItemClick(String des, String name) {
+        mOnItemClickListener.onItemClick(des, name);
+        back();
       }
 
       @Override
@@ -113,6 +98,9 @@ public class LocationFragment extends BaseFragment {
       sugguestLocations.addAll(PrefWrapper.getPlaces(getContext()).getmSugguestLocations());
       myLocationAdapter.notifyDataSetChanged();
     }
+  }
 
+  public interface OnItemClickListener {
+    void onItemClick(String locationKey, String name);
   }
 }

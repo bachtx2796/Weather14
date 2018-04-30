@@ -66,7 +66,7 @@ public class MyLocationAdapter extends RecyclerView.Adapter {
     myLocationHolder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        onClickTrashhListener.onItemClick(mSugguestLocations.get(position).getKey());
+        onClickTrashhListener.onItemClick(mSugguestLocations.get(position).getKey(),mSugguestLocations.get(position).getDescription());
       }
     });
     myLocationHolder.mNameTv.setText(mSugguestLocations.get(position).getDescription());
@@ -78,7 +78,7 @@ public class MyLocationAdapter extends RecyclerView.Adapter {
   }
 
   public interface OnClickTrashhListener {
-    void onItemClick(String des);
+    void onItemClick(String des,String name);
 
     void onClickTrash(int pos);
   }

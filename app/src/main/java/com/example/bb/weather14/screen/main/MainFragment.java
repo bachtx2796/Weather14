@@ -130,6 +130,9 @@ public class MainFragment extends BaseFragment {
   private List<TempInDay> tempInDays;
   private DailyAdapter dailyAdapter;
 
+  private String mLocation;
+  private String mLocationName;
+
   //  @BindView(R.id.rv_hourly_weather)
 //  RecyclerView mHourlyRv;
   private FusedLocationProviderClient fusedLocationProviderClient;
@@ -180,7 +183,12 @@ public class MainFragment extends BaseFragment {
     super.onResume();
     if (!PermissionUtils.needRequestPermissions(getActivity(), MainFragment.this, LOCATION, 100)) {
       DialogUtils.showProgressDialog(getContext());
-      getMyLocation();
+      if (mLocation == null){
+        getMyLocation();
+      } else {
+        getTemp(mLocation);
+      }
+
     }
   }
 
@@ -375,8 +383,8 @@ public class MainFragment extends BaseFragment {
 
     ArrayList<Entry> values = new ArrayList<Entry>();
     for (int i = 0; i < 12; i++) {
-      int temp = Math.round(tempInHours.get(i).getTemp().getTemp());
-      values.add(new Entry(i, temp, null));
+      float temp = tempInHours.get(i).getTemp().getTemp();
+      values.add(new Entry(i, Math.round(temp), null));
     }
     LineDataSet set1 = new LineDataSet(values, "Biên độ nhiệt");
 
@@ -418,4 +426,14 @@ public class MainFragment extends BaseFragment {
     mLineChartTemp.setData(data);
   }
 
+  public void setLocationKey(String key,String name){
+    mLocation = key;
+    mLocationName = name;
+  }
+
+  public void getTemp(String locationKey) {
+    DialogUtils.showProgressDialog(getContext());
+    mCustomHeaderView.setTitle(mLocationName);
+    getContentTemp(locationKey);
+  }
 }
