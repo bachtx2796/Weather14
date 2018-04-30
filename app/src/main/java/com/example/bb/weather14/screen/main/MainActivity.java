@@ -18,37 +18,48 @@ import butterknife.OnClick;
 
 public class MainActivity extends ContainerActivity {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout mDrawerLayout;
+  @BindView(R.id.drawer_layout)
+  DrawerLayout mDrawerLayout;
 
-    @Override
-    public Fragment onCreateFirstFragment() {
-        return new MainFragment(this);
-    }
+  private MainFragment mainFragment;
 
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_main;
-    }
+  @Override
+  public Fragment onCreateFirstFragment() {
+    mainFragment = new MainFragment(this);
+    return mainFragment;
+  }
 
-    public void showMenu() {
-        mDrawerLayout.openDrawer(Gravity.LEFT);
-    }
+  @Override
+  public int getLayoutId() {
+    return R.layout.activity_main;
+  }
 
-    public void closeMenu() {
-        mDrawerLayout.closeDrawers();
-    }
+  public void showMenu() {
+    mDrawerLayout.openDrawer(Gravity.LEFT);
+  }
 
-    @OnClick(R.id.rada_bt)
-    public void showRada() {
-        new RadaFragmnet(this).pushView(true);
-        closeMenu();
-    }
+  public void closeMenu() {
+    mDrawerLayout.closeDrawers();
+  }
 
-    @OnClick(R.id.location_bt)
-    public void showLoacation() {
-        new LocationFragment(this).pushView(true);
-        closeMenu();
-    }
+  @OnClick(R.id.rada_bt)
+  public void showRada() {
+    new RadaFragmnet(this).pushView(true);
+    closeMenu();
+  }
+
+  @OnClick(R.id.location_bt)
+  public void showLoacation() {
+    LocationFragment locationFragment = new LocationFragment(this);
+    locationFragment.setmOnItemClickListener(new LocationFragment.OnItemClickListener() {
+      @Override
+      public void onItemClick(String locationKey,String name) {
+        mainFragment.setLocationKey(locationKey,name);
+        mainFragment.getTemp(locationKey);
+      }
+    });
+    locationFragment.pushView(true);
+    closeMenu();
+  }
 
 }

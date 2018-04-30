@@ -6,7 +6,7 @@ public class Imperial {
     @SerializedName("UnitType")
     private int unitType;
     @SerializedName("Value")
-    private int value;
+    private float value;
     @SerializedName("Unit")
     private String unit;
 
@@ -18,11 +18,11 @@ public class Imperial {
         return unitType;
     }
 
-    public void setValue(int value) {
+    public void setValue(float value) {
         this.value = value;
     }
 
-    public int getValue() {
+    public float getValue() {
         return value;
     }
 

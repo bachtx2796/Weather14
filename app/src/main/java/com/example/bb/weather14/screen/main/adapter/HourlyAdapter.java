@@ -1,4 +1,4 @@
-package com.example.bb.weather14.screen.main;
+package com.example.bb.weather14.screen.main.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -25,24 +25,28 @@ import butterknife.ButterKnife;
 
 public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.HourlyVH> {
   private Context mContext;
-  private List<HourlyDTO> mlistWeather=new ArrayList<HourlyDTO>();
+  private List<HourlyDTO> mlistWeather;
+
   public HourlyAdapter(Context context, List<HourlyDTO> hourlyDTOS) {
-    this.mlistWeather= hourlyDTOS;
-    this.mContext=context;
+    this.mlistWeather = hourlyDTOS;
+    this.mContext = context;
   }
 
   @Override
   public HourlyVH onCreateViewHolder(ViewGroup parent, int viewType) {
-    View v= LayoutInflater.from(mContext).inflate(R.layout.hourly_weather_item,parent,false);
+    View v = View.inflate(mContext, R.layout.item_temp_hourly, null);
+    ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    v.setLayoutParams(params);
     return new HourlyVH(v);
   }
 
   @Override
   public void onBindViewHolder(HourlyVH holder, int position) {
-    holder.mTimeTv.setText("13:00");
-    String uri= WeatherUtils.getWeatherIconURL(mlistWeather.get(position).getIconValue());
+    HourlyDTO hourlyDTO = mlistWeather.get(position);
+    holder.mTimeTv.setText(hourlyDTO.getDateTime().substring(11,16));
+    String uri = WeatherUtils.getWeatherIconURL(hourlyDTO.getIconValue());
     Picasso.with(mContext).load(uri).into(holder.mWeatherIv);
-    holder.mDegreeTv.setText(mlistWeather.get(0).getTemp().getTemp()+"");
+    holder.mDegreeTv.setText(hourlyDTO.getRainProbability() + "%");
 
   }
 
@@ -51,17 +55,17 @@ public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.HourlyVH> 
     return mlistWeather.size();
   }
 
-  class HourlyVH extends RecyclerView.ViewHolder{
-    @BindView(R.id.tv_time_weather)
+  class HourlyVH extends RecyclerView.ViewHolder {
+    @BindView(R.id.hour_tv)
     TextView mTimeTv;
-    @BindView(R.id.iv_weather_ic)
+    @BindView(R.id.hourly_temp_iv)
     ImageView mWeatherIv;
-    @BindView(R.id.tv_degree_hourly)
+    @BindView(R.id.hourly_rain_tv)
     TextView mDegreeTv;
 
     public HourlyVH(View itemView) {
       super(itemView);
-      ButterKnife.bind(this,itemView);
+      ButterKnife.bind(this, itemView);
     }
 
   }

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:gravity="center_horizontal"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_day"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_5dp">
+
+    <TextView
+      android:id="@+id/day_tv"
+      style="@style/BaseTextView.TitleText"
+      android:text="TH 6"
+      android:textSize="@dimen/ts_14sp" />
+
+    <View
+      style="@style/LineDevice"
+      android:layout_marginLeft="0dp"
+      android:background="@color/white" />
+  </LinearLayout>
+
+  <ImageView
+    android:id="@+id/daily_temp_iv"
+    android:layout_width="30dp"
+    android:layout_height="24dp"
+    android:layout_marginTop="@dimen/margin_5dp" />
+
+  <TextView
+    android:id="@+id/daily_rain_tv"
+    style="@style/BaseTextView.TitleText"
+    android:layout_marginLeft="@dimen/margin_7dp"
+    android:layout_marginRight="@dimen/margin_7dp"
+    android:layout_marginTop="@dimen/margin_5dp"
+    android:drawableLeft="@drawable/umbr_rain_ic"
+    android:drawablePadding="4dp"
+    android:text="1%"
+    android:textColor="@color/orange_text"
+    android:textSize="@dimen/ts_13sp" />
+
+  <View
+    android:id="@+id/space_view"
+    android:layout_width="1dp"
+    android:layout_height="1dp" />
+
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_5dp">
+
+    <TextView
+      android:id="@+id/daily_max_temp_tv"
+      style="@style/BaseTextView.TitleText"
+      android:text="26 " />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_height="match_parent"
+      android:layout_marginLeft="-1dp"
+      android:text="o"
+      android:textSize="11sp" />
+  </LinearLayout>
+
+  <View
+    android:id="@+id/chart_view"
+    android:layout_width="12dp"
+    android:layout_height="200dp"
+    android:layout_marginTop="@dimen/margin_5dp"
+    android:background="@drawable/bg_chart_temp" />
+
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_5dp">
+
+    <TextView
+      android:id="@+id/daily_min_temp_tv"
+      style="@style/BaseTextView.TitleText"
+      android:text="26 " />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_height="match_parent"
+      android:layout_marginLeft="-1dp"
+      android:text="o"
+      android:textSize="11sp" />
+  </LinearLayout>
+
+</LinearLayout>

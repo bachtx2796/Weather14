@@ -28,11 +28,11 @@ public class HourlyDTO {
   @SerializedName("UVIndexText")
   String uvIndexText;
   @SerializedName("RainProbability")
-  String rainProbability;
+  int rainProbability;
   @SerializedName("SnowProbability")
-  String snowProbability;
+  int snowProbability;
   @SerializedName("IceProbability")
-  String iceProbability;
+  int iceProbability;
   @SerializedName("Rain")
   WeatherUnitDTO rainAmount;
   @SerializedName("Snow")
@@ -82,15 +82,15 @@ public class HourlyDTO {
     return uvIndexText;
   }
 
-  public String getRainProbability() {
+  public int getRainProbability() {
     return rainProbability;
   }
 
-  public String getSnowProbability() {
+  public int getSnowProbability() {
     return snowProbability;
   }
 
-  public String getIceProbability() {
+  public int getIceProbability() {
     return iceProbability;
   }
 
