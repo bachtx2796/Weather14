@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.bb.bachcore.activity.ContainerView;
 import com.example.bb.bachcore.utils.StringUtils;
 import com.example.bb.weather14.R;
 
@@ -28,17 +29,18 @@ import static com.example.bb.weather14.R.styleable.CustomHeaderView_custom_heard
 public class CustomHeaderView extends LinearLayout {
 
     @BindView(R.id.title_tv)
-    TextView mTitleTv;
+    public TextView mTitleTv;
     @BindView(R.id.action_iv)
     ImageView mActionIv;
     @BindView(R.id.back_iv)
     ImageView mBackIv;
     @BindView(R.id.custom_layout)
     LinearLayout mCusLinearLayout;
-
-    public CustomHeaderView(Context context) {
+    private ContainerView mContainer;
+    public CustomHeaderView(Context context, ContainerView containerView) {
         super(context);
         init(null, 0);
+        mContainer=containerView;
     }
 
     public CustomHeaderView(Context context, AttributeSet attrs) {
@@ -92,4 +94,11 @@ public class CustomHeaderView extends LinearLayout {
         mTitleTv.setText(title);
     }
 
+    public ImageView getmBackIv() {
+        return mBackIv;
+    }
+
+    public String getTitle() {
+        return mTitleTv.getText().toString();
+    }
 }

@@ -27,6 +27,7 @@ import com.example.bb.bachcore.utils.DialogUtils;
 import com.example.bb.bachcore.utils.PermissionUtils;
 import com.example.bb.bachcore.utils.RecyclerUtils;
 import com.example.bb.weather14.R;
+import com.example.bb.weather14.screen.hourly.HourlyFragment;
 import com.example.bb.weather14.data.dto.DailyDTO;
 import com.example.bb.weather14.data.dto.LocationDTO;
 import com.example.bb.weather14.data.dto.TempDailyDTO;
@@ -337,7 +338,12 @@ public class MainFragment extends BaseFragment {
 
     RecyclerUtils.setupHorizontalRecyclerView(getContext(), mHourlyRv);
     tempInHours = hourlies;
-    hourlyAdapter = new HourlyAdapter(getContext(), tempInHours);
+    hourlyAdapter = new HourlyAdapter(getContext(), tempInHours, new HourlyAdapter.OnHourlyItemClicked() {
+      @Override
+      public void onItemClicked(int position) {
+        new HourlyFragment(mContainerView).setData(tempInHours,position,mCustomHeaderView.getTitle()).pushView(true);
+      }
+    });
     mHourlyRv.setAdapter(hourlyAdapter);
     SpannableString content = new SpannableString(getContext().getString(R.string.temp_detail));
     content.setSpan(new UnderlineSpan(), 0, content.length(), 0);

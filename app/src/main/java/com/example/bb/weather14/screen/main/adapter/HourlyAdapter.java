@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.bb.weather14.R;
@@ -25,11 +26,12 @@ import butterknife.ButterKnife;
 
 public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.HourlyVH> {
   private Context mContext;
-  private List<HourlyDTO> mlistWeather;
-
-  public HourlyAdapter(Context context, List<HourlyDTO> hourlyDTOS) {
-    this.mlistWeather = hourlyDTOS;
-    this.mContext = context;
+  private List<HourlyDTO> mlistWeather=new ArrayList<HourlyDTO>();
+  private OnHourlyItemClicked clicked;
+  public HourlyAdapter(Context context, List<HourlyDTO> hourlyDTOS,OnHourlyItemClicked clicked) {
+    this.mlistWeather= hourlyDTOS;
+    this.mContext=context;
+    this.clicked=clicked;
   }
 
   @Override
@@ -41,13 +43,18 @@ public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.HourlyVH> 
   }
 
   @Override
-  public void onBindViewHolder(HourlyVH holder, int position) {
+  public void onBindViewHolder(HourlyVH holder, final int position) {
     HourlyDTO hourlyDTO = mlistWeather.get(position);
     holder.mTimeTv.setText(hourlyDTO.getDateTime().substring(11,16));
     String uri = WeatherUtils.getWeatherIconURL(hourlyDTO.getIconValue());
     Picasso.with(mContext).load(uri).into(holder.mWeatherIv);
     holder.mDegreeTv.setText(hourlyDTO.getRainProbability() + "%");
-
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        clicked.onItemClicked(position);
+      }
+    });
   }
 
   @Override
@@ -68,5 +75,9 @@ public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.HourlyVH> 
       ButterKnife.bind(this, itemView);
     }
 
+  }
+
+  public interface OnHourlyItemClicked{
+     void onItemClicked(int position);
   }
 }

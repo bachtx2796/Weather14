@@ -6,6 +6,7 @@ import android.view.Gravity;
 
 import com.example.bb.bachcore.activity.ContainerActivity;
 import com.example.bb.weather14.R;
+import com.example.bb.weather14.screen.hourly.HourlyFragment;
 import com.example.bb.weather14.screen.location.LocationFragment;
 import com.example.bb.weather14.screen.rada.RadaFragmnet;
 

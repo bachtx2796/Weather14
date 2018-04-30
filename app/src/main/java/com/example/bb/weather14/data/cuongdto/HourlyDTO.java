@@ -17,6 +17,8 @@ public class HourlyDTO {
   WeatherUnitDTO temp;
   @SerializedName("RealFeelTemperature")
   WeatherUnitDTO realFeel;
+  @SerializedName("RelativeHumidity")
+  int humidity;
   @SerializedName("Wind")
   WindDTO wind;
   @SerializedName("WindGust")
@@ -41,7 +43,8 @@ public class HourlyDTO {
   WeatherUnitDTO iceAmount;
   @SerializedName("CloudCover")
   int cloudCover;
-
+  @SerializedName("IsDaylight")
+  boolean isDayLight;
   public String getDateTime() {
     return dateTime;
   }
@@ -108,5 +111,13 @@ public class HourlyDTO {
 
   public int getCloudCover() {
     return cloudCover;
+  }
+
+  public int getHumidity() {
+    return humidity;
+  }
+
+  public boolean isDayLight() {
+    return isDayLight;
   }
 }
