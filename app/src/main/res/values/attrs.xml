@@ -7,4 +7,7 @@
     <attr name="custom_hearder_background" format="color"/>
   </declare-styleable>
 
+  <declare-styleable name="ItemParameterHourlyDetail">
+    <attr name="item_parameter_title" format="string"/>
+  </declare-styleable>
 </resources>

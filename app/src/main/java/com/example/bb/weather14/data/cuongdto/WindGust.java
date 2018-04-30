@@ -10,4 +10,7 @@ public class WindGust {
   @SerializedName("Speed")
   WeatherUnitDTO speed;
 
+  public WeatherUnitDTO getSpeed() {
+    return speed;
+  }
 }

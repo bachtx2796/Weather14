@@ -3,8 +3,6 @@ package com.example.bb.weather14.screen.main;
 import android.Manifest;
 import android.annotation.SuppressLint;
 
-import android.content.Context;
-
 import android.location.Location;
 import android.support.annotation.NonNull;
 
@@ -12,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.example.bb.bachcore.activity.ContainerView;
@@ -20,6 +17,7 @@ import com.example.bb.bachcore.fragment.BaseFragment;
 import com.example.bb.bachcore.utils.DialogUtils;
 import com.example.bb.bachcore.utils.PermissionUtils;
 import com.example.bb.weather14.R;
+import com.example.bb.weather14.screen.hourly.HourlyFragment;
 import com.example.bb.weather14.utils.DateTimeUtil;
 import com.example.bb.weather14.utils.WeatherUtils;
 import com.example.bb.weather14.customview.CustomHeaderView;
@@ -34,6 +32,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -57,6 +56,8 @@ public class MainFragment extends BaseFragment {
 
   @BindView(R.id.rv_hourly_weather)
   RecyclerView mHourlyRv;
+
+  private List<HourlyDTO> data=new ArrayList<>();
   private FusedLocationProviderClient fusedLocationProviderClient;
   private String[] LOCATION = new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
 
@@ -91,10 +92,11 @@ public class MainFragment extends BaseFragment {
       public void onResponse(Call<List<HourlyDTO>> call, Response<List<HourlyDTO>> response) {
         DialogUtils.dismissProgressDialog();
         if (response.isSuccessful()) {
+          data.addAll(response.body());
           HourlyAdapter adapter = new HourlyAdapter(getContext(), response.body(), new HourlyAdapter.OnHourlyItemClicked() {
             @Override
             public void onItemClicked(int position) {
-
+              new HourlyFragment(mContainerView).setData(data,position).pushView(true);
             }
           });
           LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -138,6 +140,7 @@ public class MainFragment extends BaseFragment {
     fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
       @Override
       public void onSuccess(Location location) {
+        DialogUtils.dismissProgressDialog();
         if (location != null) {
           LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
           mCustomHeaderView.setTitle(latLng.latitude + " " + latLng.longitude);

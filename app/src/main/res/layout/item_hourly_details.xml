@@ -1,56 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/ll_hourly_detail"
+  android:background="@drawable/rainny"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@drawable/Snowy"
   android:orientation="vertical">
 
-  <LinearLayout
+  <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="1" />
+    android:orientation="vertical"
+    android:layout_weight="2">
+    <TextView
+      android:id="@+id/tv_current_time"
+      style="@style/BaseTextView.TitleText"
+      android:layout_centerInParent="true"
+      android:text="14 : 00"
+       />
+  </RelativeLayout>
 
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="2"
+    android:layout_weight="3"
     android:orientation="horizontal">
 
-    <LinearLayout
+    <RelativeLayout
       android:layout_width="0dp"
       android:layout_height="wrap_content"
+      android:padding="5dp"
       android:layout_weight="2"
-      android:layout_gravity="center"
-      android:gravity="center"
       android:orientation="vertical">
 
-      <TextView
-        android:id="@+id/tv_weather_status"
+      <LinearLayout
+        android:id="@+id/ll_weather_status"
         android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/margin_5dp"
         android:layout_height="wrap_content"
-        android:text="Sunny"
-        android:textColor="@color/white" />
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="75 *c"
-        android:fontFamily="sans-serif-light"
-        android:textColor="@color/white"
-        android:textSize="60sp" />
-    </LinearLayout>
+        <ImageView
+          android:id="@+id/iv_status"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_shining_sun" />
+
+        <TextView
+          android:id="@+id/tv_weather_status"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:maxLines="1"
+          android:layout_marginStart="@dimen/margin_5dp"
+          android:text="Sunny"
+          android:textColor="@color/white"
+          android:textSize="30sp" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/ll_weather_status"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/margin_5dp"
+          android:gravity="center">
+
+          <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_humidity"
+            />
+          <TextView
+            android:id="@+id/tv_humi"
+            style="@style/BaseTextView.TitleText"
+            android:textSize="22sp"
+            android:text="43%" />
+        </LinearLayout>
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="5dp"
+          android:gravity="center">
+
+          <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_umbrella" />
+          <TextView
+            android:id="@+id/tv_rain_prob"
+            style="@style/BaseTextView.TitleText"
+            android:textSize="22sp"
+            android:text="43%" />
+        </LinearLayout>
+      </LinearLayout>
+
+    </RelativeLayout>
 
     <LinearLayout
       android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="3">
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:orientation="horizontal">
+      <TextView
+        android:id="@+id/tv_hourly_detail_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/white"
+        android:text="68C"
+        android:textSize="70sp" />
     </LinearLayout>
   </LinearLayout>
 
-  <LinearLayout
+  <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="2">
 
-  </LinearLayout>
+    android:layout_weight="3">
+    <GridLayout
+      android:id="@+id/glDetailData"
+      android:layout_width="match_parent"
+      android:columnCount="2"
+      android:padding="@dimen/margin_5dp"
+      android:layout_above="@id/iv_detail"
+      android:visibility="gone"
+      android:background="@color/dark_transparent"
+      android:layout_height="wrap_content">
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphRealFeel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowSpan="1"
+        android:layout_marginEnd="@dimen/margin_5dp"
+        android:gravity="center"
+        android:layout_columnSpan="1"
+        app:item_parameter_title="Ngoài trời :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphHumidi"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_rowSpan="1"
+        android:layout_columnSpan="1"
+        android:layout_height="wrap_content"
+        app:item_parameter_title="Độ ẩm :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphWind"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_marginEnd="@dimen/margin_5dp"
+        android:layout_height="wrap_content"
+        app:item_parameter_title="Sức gió :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphWindDirection"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        app:item_parameter_title="Hướng gió :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphWindGust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/margin_5dp"
+        app:item_parameter_title="Đợt gió mạnh :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphVisibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:item_parameter_title="Tầm nhìn xa :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphUvIndex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/margin_5dp"
+        app:item_parameter_title="Chỉ số UV :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphRainProb"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        app:item_parameter_title="Có mưa :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphRainValue"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/margin_5dp"
+        android:layout_height="wrap_content"
+        app:item_parameter_title="Lượng mưa :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphSnowProb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:item_parameter_title="Có tuyết :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphSnowValue"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_marginEnd="@dimen/margin_5dp"
+        android:layout_height="wrap_content"
+        app:item_parameter_title="Lượng tuyết :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphIceProb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:item_parameter_title="Có băng tuyết :" />
+
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphIceValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/margin_5dp"
+        app:item_parameter_title="Lượng băng tuyết :" />
+      <com.example.bb.weather14.customview.ItemParameterHourlyDetail
+        android:id="@+id/iphCloudCover"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        app:item_parameter_title="Mật độ mây :" />
+    </GridLayout>
+    <ImageView
+      android:id="@+id/iv_detail"
+      android:layout_alignParentBottom="true"
+      android:layout_width="wrap_content"
+      android:layout_marginStart="@dimen/margin_5dp"
+      android:layout_marginBottom="8dp"
+      android:src="@drawable/ic_down"
+      android:layout_centerInParent="true"
+      android:layout_height="wrap_content" />
+  </RelativeLayout>
 </LinearLayout>
