@@ -352,7 +352,12 @@ public class MainFragment extends BaseFragment {
 
     RecyclerUtils.setupHorizontalRecyclerView(getContext(), mHourlyRv);
     tempInHours = hourlies;
-    hourlyAdapter = new HourlyAdapter(getContext(), tempInHours);
+    hourlyAdapter = new HourlyAdapter(getContext(), tempInHours, new HourlyAdapter.OnHourlyItemClicked() {
+      @Override
+      public void onItemClicked(int position) {
+        new HourlyFragment(mContainerView).setData(tempInHours,position,mCustomHeaderView.getTitle()).pushView(true);
+      }
+    });
     mHourlyRv.setAdapter(hourlyAdapter);
     SpannableString content = new SpannableString(getContext().getString(R.string.temp_detail));
     content.setSpan(new UnderlineSpan(), 0, content.length(), 0);

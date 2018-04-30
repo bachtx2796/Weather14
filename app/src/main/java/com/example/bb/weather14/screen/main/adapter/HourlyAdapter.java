@@ -77,7 +77,7 @@ public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.HourlyVH> 
 
   }
 
-  interface OnHourlyItemClicked{
+  public interface OnHourlyItemClicked{
      void onItemClicked(int position);
   }
 }

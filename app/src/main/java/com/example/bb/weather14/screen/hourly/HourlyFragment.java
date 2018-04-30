@@ -12,7 +12,7 @@ import com.example.bb.bachcore.utils.DialogUtils;
 import com.example.bb.weather14.R;
 import com.example.bb.weather14.customview.CustomHeaderView;
 import com.example.bb.weather14.data.cuongdto.HourlyDTO;
-import com.example.bb.weather14.screen.main.HourlyAdapter;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +29,7 @@ public class HourlyFragment extends BaseFragment {
   ViewPager hourlyVp;
   @BindView(R.id.header)
   CustomHeaderView header;
+  private String mLocationName;
   private List<HourlyDTO> mListData=new ArrayList<HourlyDTO>();
   private int postion;
 
@@ -50,6 +51,7 @@ public class HourlyFragment extends BaseFragment {
   @Override
   protected void initLayout() {
     DialogUtils.showProgressDialog(getContext());
+    header.setTitle(mLocationName);
     hourlyVp.setAdapter(new HourlyDetailAdapter(getContext(),mListData));
     hourlyVp.setCurrentItem(postion);
     header.getmBackIv().setOnClickListener(new View.OnClickListener() {
@@ -60,9 +62,10 @@ public class HourlyFragment extends BaseFragment {
     });
   }
 
-  public HourlyFragment setData(List<HourlyDTO> data,int position){
+  public HourlyFragment setData(List<HourlyDTO> data,int position,String locationName){
     this.mListData=data;
     this.postion=position;
+    mLocationName=locationName;
     return this;
   }
 }
