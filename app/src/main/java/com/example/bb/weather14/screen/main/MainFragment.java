@@ -214,20 +214,6 @@ public class MainFragment extends BaseFragment {
         } else {
           getMyLocation();
         }
-//        } else {
-//          CustomIOSDialog dialog = new CustomIOSDialog(getContext(), new CustomIOSDialog.OnDialogClicked() {
-//            @Override
-//            public void negativeClicked() {
-//              getActivity().finish();
-//            }
-//
-//            @Override
-//            public void possitiveClicked() {
-//              getMyLocation();
-//            }
-//          }, "Quit", "Try again");
-//          dialog.show();
-//        }
       }
     });
   }
