@@ -143,6 +143,24 @@
 
   <View style="@style/LineDevice" />
 
+  <LinearLayout
+    android:id="@+id/share_bt"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:gravity="center_vertical"
+    android:padding="16dp">
+
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_radar" />
+
+    <TextView
+      style="@style/BaseTextView.TitleText"
+      android:layout_marginLeft="5dp"
+      android:text="Chia se" />
+  </LinearLayout>
+
   <TextView
     style="@style/BaseTextView.TitleText"
     android:layout_height="match_parent"

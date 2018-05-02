@@ -71,6 +71,11 @@ public class MainActivity extends ContainerActivity {
     closeMenu();
   }
 
+  @OnClick(R.id.share_bt)
+  public void share(){
+    shareTempWithFB("google.com");
+  }
+
   private void shareTempWithFB(String link) {
 
     CallbackManager mCallbackManager = CallbackManager.Factory.create();
