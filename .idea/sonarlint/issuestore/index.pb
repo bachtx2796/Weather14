@@ -47,3 +47,13 @@ w
 Gapp/src/main/java/com/example/bb/weather14/utils/NotificationUtils.java,c/2/c2b3b8d08758dddf2be57c44d622ca161f5cadf2
 _
 /app/src/main/res/layout/layout_notification.xml,f/8/f871144bc397bc2da69c226ed90ed6d5303bf037
+Œ
+\app/src/main/java/com/example/bb/weather14/pushnotification/MyFirebaseInstanceIDService.java,4/6/468fa26c5f75de4d733cfc435493970c813f4acb
+{
+Kapp/src/main/java/com/example/bb/weather14/customview/CustomHeaderView.java,7/f/7fabc8756ce1f187b5b4e40b84dd270e9de5d227
+^
+.app/src/main/res/layout/layout_header_view.xml,a/7/a71052484f8bfbe0bcdbd33d6333959bab70075e
+x
+Happ/src/main/java/com/example/bb/weather14/screen/main/MainFragment.java,2/2/22de191b9268bff00e4a524c5cd8c728450a659a
+A
+gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
