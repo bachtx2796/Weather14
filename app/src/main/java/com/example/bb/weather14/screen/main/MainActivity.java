@@ -72,8 +72,12 @@ public class MainActivity extends ContainerActivity {
   }
 
   @OnClick(R.id.share_bt)
-  public void share(){
-    shareTempWithFB("google.com");
+  public void share() {
+    if ("".equals(mainFragment.getLink())) {
+      shareTempWithFB("https://m.accuweather.com/vi/vn/hanoi/353412/current-weather/353412");
+    } else {
+      shareTempWithFB(mainFragment.getLink());
+    }
   }
 
   private void shareTempWithFB(String link) {

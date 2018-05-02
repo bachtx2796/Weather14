@@ -29,7 +29,7 @@
 
     <TextView
       style="@style/BaseTextView.TitleText"
-      android:layout_marginLeft="5dp"
+      android:layout_marginLeft="10dp"
       android:text="@string/home" />
   </LinearLayout>
 
@@ -49,7 +49,7 @@
 
     <TextView
       style="@style/BaseTextView.TitleText"
-      android:layout_marginLeft="5dp"
+      android:layout_marginLeft="10dp"
       android:text="@string/location" />
   </LinearLayout>
 
@@ -69,7 +69,7 @@
 
     <TextView
         style="@style/BaseTextView.TitleText"
-        android:layout_marginLeft="5dp"
+      android:layout_marginLeft="10dp"
         android:text="@string/radar" />
   </LinearLayout>
 
@@ -88,7 +88,7 @@
 
     <TextView
       style="@style/BaseTextView.TitleText"
-      android:layout_marginLeft="5dp"
+      android:layout_marginLeft="10dp"
       android:text="@string/temp" />
 
     <RadioGroup
@@ -131,13 +131,14 @@
     <TextView
       style="@style/BaseTextView.TitleText"
       android:layout_width="0dp"
-      android:layout_marginLeft="5dp"
+      android:layout_marginLeft="10dp"
       android:layout_weight="1"
       android:text="@string/notification" />
 
     <Switch
       android:id="@+id/notification_switch"
       android:layout_width="wrap_content"
+      android:checked="true"
       android:layout_height="wrap_content" />
   </LinearLayout>
 
@@ -153,12 +154,12 @@
     <ImageView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:src="@drawable/ic_radar" />
+      android:src="@drawable/ic_share" />
 
     <TextView
       style="@style/BaseTextView.TitleText"
-      android:layout_marginLeft="5dp"
-      android:text="Chia se" />
+      android:layout_marginLeft="10dp"
+      android:text="Chia sẻ" />
   </LinearLayout>
 
   <TextView

@@ -28,6 +28,12 @@ public class TempDetailDTO {
   private int cloudCover; //may phu
   @SerializedName("Pressure")
   private Elevation pressure;
+  @SerializedName("MobileLink")
+  private String link;
+
+  public String getLink() {
+    return link;
+  }
 
   public int getCloudCover() {
     return cloudCover;
