@@ -80,56 +80,48 @@
       android:id="@+id/doam_tv"
       style="@style/BaseTextView.TitleText"
       android:layout_marginBottom="@dimen/margin_5dp"
-      android:text="Độ ẩm"
       android:textSize="@dimen/ts_14sp" />
 
     <TextView
       android:id="@+id/luongmua_tv"
       style="@style/BaseTextView.TitleText"
       android:layout_marginBottom="@dimen/margin_5dp"
-      android:text="Độ ẩm"
       android:textSize="@dimen/ts_14sp" />
 
     <TextView
       android:id="@+id/kha_nag_co_mua_tv"
       style="@style/BaseTextView.TitleText"
       android:layout_marginBottom="@dimen/margin_5dp"
-      android:text="Độ ẩm"
       android:textSize="@dimen/ts_14sp" />
 
     <TextView
       android:id="@+id/may_phu_tv"
       style="@style/BaseTextView.TitleText"
       android:layout_marginBottom="@dimen/margin_5dp"
-      android:text="Độ ẩm"
       android:textSize="@dimen/ts_14sp" />
 
     <TextView
       android:id="@+id/ap_suat_tv"
       style="@style/BaseTextView.TitleText"
       android:layout_marginBottom="@dimen/margin_5dp"
-      android:text="Độ ẩm"
       android:textSize="@dimen/ts_14sp" />
 
     <TextView
       android:id="@+id/cuc_tim_tv"
       style="@style/BaseTextView.TitleText"
       android:layout_marginBottom="@dimen/margin_5dp"
-      android:text="Độ ẩm"
       android:textSize="@dimen/ts_14sp" />
 
     <TextView
       android:id="@+id/binh_minh_tv"
       style="@style/BaseTextView.TitleText"
       android:layout_marginBottom="@dimen/margin_5dp"
-      android:text="Độ ẩm"
       android:textSize="@dimen/ts_14sp" />
 
     <TextView
       android:id="@+id/hoang_hon_tv"
       style="@style/BaseTextView.TitleText"
       android:layout_marginBottom="@dimen/margin_5dp"
-      android:text="Độ ẩm"
       android:textSize="@dimen/ts_14sp" />
 
 

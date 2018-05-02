@@ -35,7 +35,7 @@
       style="@style/BaseTextView.TitleText"
       android:layout_marginLeft="@dimen/margin_20dp"
       android:fontFamily="sans-serif-thin"
-      android:text="25"
+      android:text="00"
       android:textSize="56sp" />
 
     <TextView
@@ -69,7 +69,6 @@
       <TextView
         android:id="@+id/main_des_tv"
         style="@style/BaseTextView.TitleText"
-        android:text="Ẩm ướt, nhiều mây"
         android:textSize="14sp" />
     </LinearLayout>
   </LinearLayout>
@@ -83,7 +82,7 @@
     <TextView
       android:id="@+id/max_temp_tv"
       style="@style/BaseTextView.TitleText"
-      android:text="Lớn nhất: 30"
+      android:text="Lớn nhất: 00"
       android:textSize="@dimen/ts_14sp" />
 
     <TextView
@@ -97,7 +96,7 @@
       android:id="@+id/min_temp_tv"
       style="@style/BaseTextView.TitleText"
       android:layout_marginLeft="@dimen/margin_10dp"
-      android:text="Nhỏ nhất: 30"
+      android:text="Nhỏ nhất: 00"
       android:textSize="@dimen/ts_14sp" />
 
     <TextView
@@ -112,7 +111,6 @@
     android:id="@+id/wind_tv"
     style="@style/BaseTextView.TitleText"
     android:layout_gravity="center"
-    android:text="Gió: Đông   12km/h"
     android:textSize="@dimen/ts_14sp" />
 
 </LinearLayout>

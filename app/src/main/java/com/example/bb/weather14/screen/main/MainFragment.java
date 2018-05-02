@@ -131,7 +131,8 @@ public class MainFragment extends BaseFragment {
   private List<TempInDay> tempInDays;
   private DailyAdapter dailyAdapter;
 
-  private String mLocation;
+  private String link = "";
+  private String mLocation = "";
   private String mLocationName;
 
   //  @BindView(R.id.rv_hourly_weather)
@@ -154,28 +155,24 @@ public class MainFragment extends BaseFragment {
     WeatherUtils.getWeatherIconURL(11);
     fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
     new MapManager(getContext()).turnOnGPS();
-
-//    ServiceBuilder.getApiService().getHourlyWeather("353412", true, false).enqueue(new retrofit2.Callback<List<HourlyDTO>>() {
-//      @Override
-//      public void onResponse(Call<List<HourlyDTO>> call, Response<List<HourlyDTO>> response) {
-//        if (response.isSuccessful()) {
-//          HourlyAdapter adapter = new HourlyAdapter(getContext(), response.body());
-//          LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-//          mHourlyRv.setLayoutManager(manager);
-//          mHourlyRv.setAdapter(adapter);
-//        }
-//      }
-//
-//      @Override
-//      public void onFailure(Call<List<HourlyDTO>> call, Throwable t) {
-//        // DO SOMETHING
-//      }
-//    });
   }
 
   @OnClick(R.id.back_iv)
   public void showSetting() {
     ((MainActivity) mContainerView).showMenu();
+  }
+
+  @OnClick(R.id.action_iv)
+  public void getTempCurrentLocation() {
+    if (!mLocation.equals("")){
+      mLocation = "";
+      getMyLocation();
+    }
+  }
+
+  @OnClick(R.id.detail_bt)
+  public void showTempDetail(){
+    new HourlyFragment(mContainerView).setData(tempInHours, 0, mCustomHeaderView.getTitle()).pushView(true);
   }
 
   @SuppressLint("MissingPermission")
@@ -184,7 +181,7 @@ public class MainFragment extends BaseFragment {
     super.onResume();
     if (!PermissionUtils.needRequestPermissions(getActivity(), MainFragment.this, LOCATION, 100)) {
       DialogUtils.showProgressDialog(getContext());
-      if (mLocation == null){
+      if (mLocation.equals("")) {
         getMyLocation();
       } else {
         getTemp(mLocation);
@@ -245,6 +242,7 @@ public class MainFragment extends BaseFragment {
       public void onResponse(Call<List<TempDetailDTO>> call, Response<List<TempDetailDTO>> response) {
         DialogUtils.dismissProgressDialog();
         if (response.isSuccessful()) {
+          link = response.body().get(0).getLink();
           getTempDaily(key, response.body().get(0));
         } else {// on error
           Toast.makeText(getContext(), "Lỗi gì đó ?:)?!!", Toast.LENGTH_SHORT).show();
@@ -264,7 +262,7 @@ public class MainFragment extends BaseFragment {
       @Override
       public void onResponse(Call<TempDailyDTO> call, Response<TempDailyDTO> response) {
         if (response.isSuccessful()) {
-          getTempHourly(key,tempDetailDTO,response.body());
+          getTempHourly(key, tempDetailDTO, response.body());
         } else {
           Toast.makeText(getContext(), "Lỗi gì đó ?:)?!!", Toast.LENGTH_SHORT).show();
         }
@@ -341,7 +339,7 @@ public class MainFragment extends BaseFragment {
     hourlyAdapter = new HourlyAdapter(getContext(), tempInHours, new HourlyAdapter.OnHourlyItemClicked() {
       @Override
       public void onItemClicked(int position) {
-        new HourlyFragment(mContainerView).setData(tempInHours,position,mCustomHeaderView.getTitle()).pushView(true);
+        new HourlyFragment(mContainerView).setData(tempInHours, position, mCustomHeaderView.getTitle()).pushView(true);
       }
     });
     mHourlyRv.setAdapter(hourlyAdapter);
@@ -432,7 +430,7 @@ public class MainFragment extends BaseFragment {
     mLineChartTemp.setData(data);
   }
 
-  public void setLocationKey(String key,String name){
+  public void setLocationKey(String key, String name) {
     mLocation = key;
     mLocationName = name;
   }
@@ -441,5 +439,9 @@ public class MainFragment extends BaseFragment {
     DialogUtils.showProgressDialog(getContext());
     mCustomHeaderView.setTitle(mLocationName);
     getContentTemp(locationKey);
+  }
+
+  public String getLink() {
+    return link;
   }
 }

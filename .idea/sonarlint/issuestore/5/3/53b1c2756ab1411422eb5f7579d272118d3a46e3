@@ -1,4 +1,0 @@
-
-Asquid:S1068"'Remove this unused "TAG" private field.(œú¯Øÿÿÿÿÿ
-Tsquid:S1118":Add a private constructor to hide the implicit public one.(Ê¤Û¡ùÿÿÿÿ
-hsquid:S3008"NRename this field "TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œú¯Øÿÿÿÿÿ

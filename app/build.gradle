@@ -64,6 +64,8 @@ dependencies {
     compile 'com.malinskiy:superrecyclerview:1.1.4'
     implementation 'com.google.firebase:firebase-messaging:11.6.2'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    implementation 'com.facebook.android:facebook-android-sdk:4.29.0'
+    implementation 'com.facebook.android:facebook-share:[4,5)'
 }
 
 apply plugin: 'com.google.gms.google-services'

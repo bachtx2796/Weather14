@@ -1,7 +1,9 @@
 package com.example.bb.weather14.screen.main;
 
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Gravity;
 
 import com.example.bb.bachcore.activity.ContainerActivity;
@@ -9,6 +11,12 @@ import com.example.bb.weather14.R;
 import com.example.bb.weather14.screen.hourly.HourlyFragment;
 import com.example.bb.weather14.screen.location.LocationFragment;
 import com.example.bb.weather14.screen.rada.RadaFragmnet;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -54,13 +62,52 @@ public class MainActivity extends ContainerActivity {
     LocationFragment locationFragment = new LocationFragment(this);
     locationFragment.setmOnItemClickListener(new LocationFragment.OnItemClickListener() {
       @Override
-      public void onItemClick(String locationKey,String name) {
-        mainFragment.setLocationKey(locationKey,name);
+      public void onItemClick(String locationKey, String name) {
+        mainFragment.setLocationKey(locationKey, name);
         mainFragment.getTemp(locationKey);
       }
     });
     locationFragment.pushView(true);
     closeMenu();
+  }
+
+  @OnClick(R.id.share_bt)
+  public void share() {
+    if ("".equals(mainFragment.getLink())) {
+      shareTempWithFB("https://m.accuweather.com/vi/vn/hanoi/353412/current-weather/353412");
+    } else {
+      shareTempWithFB(mainFragment.getLink());
+    }
+  }
+
+  private void shareTempWithFB(String link) {
+
+    CallbackManager mCallbackManager = CallbackManager.Factory.create();
+
+    ShareLinkContent shareLinkContent = new ShareLinkContent.Builder()
+        .setContentUrl(Uri.parse(link))
+        .build();
+
+    ShareDialog dialog = new ShareDialog(this);
+    dialog.registerCallback(mCallbackManager, new FacebookCallback<Sharer.Result>() {
+      @Override
+      public void onSuccess(Sharer.Result result) {
+
+      }
+
+      @Override
+      public void onCancel() {
+
+      }
+
+      @Override
+      public void onError(FacebookException error) {
+
+      }
+    });
+
+    dialog.show(shareLinkContent, ShareDialog.Mode.NATIVE);
+
   }
 
 }
