@@ -18,6 +18,10 @@ public class WeatherUnitDTO {
     return temp;
   }
 
+  public void setTemp(float temp) {
+    this.temp = temp;
+  }
+
   public String getUnit() {
     return unit;
   }

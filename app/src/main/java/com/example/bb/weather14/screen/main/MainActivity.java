@@ -1,10 +1,15 @@
 package com.example.bb.weather14.screen.main;
 
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.bb.bachcore.activity.ContainerActivity;
 import com.example.bb.weather14.R;
@@ -29,6 +34,8 @@ public class MainActivity extends ContainerActivity {
 
   @BindView(R.id.drawer_layout)
   DrawerLayout mDrawerLayout;
+  @BindView(R.id.convert_temp_btn)
+  RadioButton mConvertTempBt;
 
   private MainFragment mainFragment;
 
@@ -110,4 +117,15 @@ public class MainActivity extends ContainerActivity {
 
   }
 
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    mConvertTempBt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      @Override
+      public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        mainFragment.convertTemp(b);
+      }
+    });
+  }
 }

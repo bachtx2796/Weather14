@@ -164,14 +164,14 @@ public class MainFragment extends BaseFragment {
 
   @OnClick(R.id.action_iv)
   public void getTempCurrentLocation() {
-    if (!mLocation.equals("")){
+    if (!mLocation.equals("")) {
       mLocation = "";
       getMyLocation();
     }
   }
 
   @OnClick(R.id.detail_bt)
-  public void showTempDetail(){
+  public void showTempDetail() {
     new HourlyFragment(mContainerView).setData(tempInHours, 0, mCustomHeaderView.getTitle()).pushView(true);
   }
 
@@ -296,7 +296,12 @@ public class MainFragment extends BaseFragment {
     });
   }
 
+  private TempDetailDTO mTempDetailDTO;
+
   private void bindData(TempDetailDTO tempDetailDTO, TempDailyDTO dailyDTO, List<HourlyDTO> hourlies) {
+
+    this.mTempDetailDTO = tempDetailDTO;
+
     mTempTv.setText(tempDetailDTO.getTemperature().getMetric().getValue() + "");
     mDesTv.setText(tempDetailDTO.getWeatherText());
     mMaxTempTv.setText("Lớn nhất: " + tempDetailDTO.getTemperatureSummary().getPast6HourRangeDTO().getMaxElevation().getMetric().getValue());
@@ -320,7 +325,7 @@ public class MainFragment extends BaseFragment {
 
     //Bind daily temp
     RecyclerUtils.setupHorizontalRecyclerView(getContext(), mDailyRv);
-    tempInDays = new ArrayList<>();
+    this.tempInDays = new ArrayList<>();
     for (int i = 0; i < 5; i++) {
       Calendar cal = Calendar.getInstance();
       cal.add(Calendar.DAY_OF_WEEK, i);
@@ -335,7 +340,7 @@ public class MainFragment extends BaseFragment {
     //Bind hourly temp
 
     RecyclerUtils.setupHorizontalRecyclerView(getContext(), mHourlyRv);
-    tempInHours = hourlies;
+    this.tempInHours = hourlies;
     hourlyAdapter = new HourlyAdapter(getContext(), tempInHours, new HourlyAdapter.OnHourlyItemClicked() {
       @Override
       public void onItemClicked(int position) {
@@ -347,6 +352,57 @@ public class MainFragment extends BaseFragment {
     content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
     mDetailBt.setText(content);
     //Bind line chart
+    bindChart(false);
+  }
+
+  public void setLocationKey(String key, String name) {
+    mLocation = key;
+    mLocationName = name;
+  }
+
+  public void getTemp(String locationKey) {
+    DialogUtils.showProgressDialog(getContext());
+    mCustomHeaderView.setTitle(mLocationName);
+    getContentTemp(locationKey);
+  }
+
+  public String getLink() {
+    return link;
+  }
+
+  public void convertTemp(boolean f) {
+    if (f) {
+      mTempTv.setText(mTempDetailDTO.getTemperature().getMetric().getValue() + 32 + "");
+      mMaxTempTv.setText("Lớn nhất: " + (mTempDetailDTO.getTemperatureSummary().getPast6HourRangeDTO().getMaxElevation().getMetric().getValue() + 32));
+      mMinTemTv.setText("Nhỏ nhất: " + (mTempDetailDTO.getTemperatureSummary().getPast6HourRangeDTO().getMinElevation().getMetric().getValue() + 32));
+      for (TempInDay tmp : tempInDays) {
+        tmp.setMaxTemp(tmp.getMaxTemp() + 32);
+        tmp.setMinTemp(tmp.getMinTemp() + 32);
+      }
+      for (HourlyDTO hourlyDTO : tempInHours) {
+        hourlyDTO.getTemp().setTemp(hourlyDTO.getTemp().getTemp() + 32);
+      }
+      bindChart(true);
+      dailyAdapter.notifyDataSetChanged();
+
+
+    } else {
+      mTempTv.setText(mTempDetailDTO.getTemperature().getMetric().getValue() + "");
+      mMaxTempTv.setText("Lớn nhất: " + mTempDetailDTO.getTemperatureSummary().getPast6HourRangeDTO().getMaxElevation().getMetric().getValue());
+      mMinTemTv.setText("Nhỏ nhất: " + mTempDetailDTO.getTemperatureSummary().getPast6HourRangeDTO().getMinElevation().getMetric().getValue());
+      for (TempInDay tmp : tempInDays) {
+        tmp.setMaxTemp(tmp.getMaxTemp() - 32);
+        tmp.setMinTemp(tmp.getMinTemp() - 32);
+      }
+      for (HourlyDTO hourlyDTO : tempInHours) {
+        hourlyDTO.getTemp().setTemp(hourlyDTO.getTemp().getTemp() - 32);
+      }
+      bindChart(false);
+      dailyAdapter.notifyDataSetChanged();
+    }
+  }
+
+  private void bindChart(boolean f) {
     mLineChartTemp.setDrawGridBackground(false);
     mLineChartTemp.getDescription().setEnabled(false);
 
@@ -385,7 +441,7 @@ public class MainFragment extends BaseFragment {
 
     mLineChartTemp.animateX(2500);
 
-    ArrayList<Entry> values = new ArrayList<Entry>();
+    ArrayList<Entry> values = new ArrayList<>();
     for (int i = 0; i < 12; i++) {
       float temp = tempInHours.get(i).getTemp().getTemp();
       values.add(new Entry(i, Math.round(temp), null));
@@ -428,20 +484,5 @@ public class MainFragment extends BaseFragment {
 
     // set data
     mLineChartTemp.setData(data);
-  }
-
-  public void setLocationKey(String key, String name) {
-    mLocation = key;
-    mLocationName = name;
-  }
-
-  public void getTemp(String locationKey) {
-    DialogUtils.showProgressDialog(getContext());
-    mCustomHeaderView.setTitle(mLocationName);
-    getContentTemp(locationKey);
-  }
-
-  public String getLink() {
-    return link;
   }
 }

@@ -78,7 +78,7 @@ public class DailyAdapter extends RecyclerView.Adapter {
 
     float scale = mContext.getResources().getDisplayMetrics().density;
 
-    tempHolder.mSpaceView.getLayoutParams().height = (int) ((10 - tempInDay.getSubTemp()) * 20 * scale);
+    tempHolder.mSpaceView.getLayoutParams().height = (int) ((15 - tempInDay.getSubTemp()) * 20 * scale);
     tempHolder.mChartTempTv.getLayoutParams().height = (int) (tempInDay.getSubTemp() * 20 * scale);
   }
 

@@ -43,4 +43,12 @@ public class TempInDay {
   public int getSubTemp() {
     return maxTemp - minTemp;
   }
+
+  public void setMaxTemp(int maxTemp) {
+    this.maxTemp = maxTemp;
+  }
+
+  public void setMinTemp(int minTemp) {
+    this.minTemp = minTemp;
+  }
 }

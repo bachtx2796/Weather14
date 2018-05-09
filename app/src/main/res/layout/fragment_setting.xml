@@ -107,7 +107,7 @@
         android:text="@string/c" />
 
       <RadioButton
-        android:id="@+id/conveyancing_loan_no_btn"
+        android:id="@+id/convert_temp_btn"
         style="@style/BaseRadioButton"
         android:layout_marginStart="-1dp"
         android:background="@drawable/bg_radio_loan_right"
